@@ -13,6 +13,10 @@ const errorHandler = (err, req, res, next) => {
         return res.status(401).json({ message: 'Invalid token' })
     }
 
+    if (err.name === 'SequelizeForeignKeyConstraintError') {
+        return res.status(500).json({ message: 'Internal server error' })
+    }
+
     if (err.name === 'SequelizeDatabaseError') {
         return res.status(500).json({ message: 'Internal server error' })
     }
