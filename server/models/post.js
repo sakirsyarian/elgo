@@ -21,10 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: {
-          msg: 'Post title cannot be empty'
+          msg: 'Title cannot be empty'
         },
         notNull: {
-          msg: 'Post title cannot be null'
+          msg: 'Title cannot be null'
         }
       }
     },
@@ -33,10 +33,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: {
-          msg: 'Post content cannot be empty'
+          msg: 'Content cannot be empty'
         },
         notNull: {
-          msg: 'Post content cannot be null'
+          msg: 'Content cannot be null'
         }
       }
     },
