@@ -1,27 +1,35 @@
 const errorHandler = (err, req, res, next) => {
+    let statusCode = (status, message) => {
+        return res.status(status).json(message)
+    }
+
     if (err.name === 'SequelizeValidationError') {
         const errors = err.errors.map(el => el.message)
-        return res.status(400).json(errors)
+        return statusCode(400, { message: errors })
     }
 
     if (err.name === 'SequelizeUniqueConstraintError') {
         const errors = err.errors.map(el => el.message)
-        return res.status(400).json(errors)
+        return statusCode(400, { message: errors })
     }
 
     if (err.name === 'JsonWebTokenError') {
-        return res.status(401).json({ message: 'Invalid token' })
+        return statusCode(401, { message: 'Invalid token' })
+    }
+
+    if (err.name === 'NotFound') {
+        return statusCode(404, { message: err.message })
     }
 
     if (err.name === 'SequelizeForeignKeyConstraintError') {
-        return res.status(500).json({ message: 'Internal server error' })
+        return statusCode(500, { message: 'Internal server error' })
     }
 
     if (err.name === 'SequelizeDatabaseError') {
-        return res.status(500).json({ message: 'Internal server error' })
+        return statusCode(500, { message: 'Internal server error' })
     }
 
-    return res.status(500).json(err)
+    return statusCode(500, { message: 'Internal server error' })
 }
 
 module.exports = errorHandler

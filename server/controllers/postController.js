@@ -36,6 +36,13 @@ class PostController {
             const { id } = req.params
             const post = await Post.findByPk(id)
 
+            if (!post) {
+                throw {
+                    name: 'NotFound',
+                    message: 'Post not found'
+                }
+            }
+
             res.status(200).json({
                 status: 'ok',
                 data: post
