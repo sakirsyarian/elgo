@@ -8,4 +8,6 @@ router.post('/', postController.postCreate)
 router.get('/', postController.postFindAll)
 router.get('/:id', postController.postFindByPk)
 
+router.delete('/:id', postController.postDelete)
+
 module.exports = router
