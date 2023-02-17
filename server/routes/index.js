@@ -4,6 +4,7 @@ const express = require('express')
 const router = express.Router()
 
 const postRoute = require('./postRoute')
+const categoryRoute = require('./categoryRoute')
 
 const UserController = require('../controllers/UserController')
 
@@ -12,7 +13,7 @@ router.get('/', (req, res) => {
 })
 
 router.use('/posts', postRoute)
+router.use('/categories', categoryRoute)
 
-// router.get('/register', UserController.userCreate)
 
 module.exports = router
