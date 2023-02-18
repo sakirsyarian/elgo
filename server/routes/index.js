@@ -7,6 +7,7 @@ const postRoute = require('./postRoute')
 const categoryRoute = require('./categoryRoute')
 const userRoutes = require('./userRoute')
 const auth = require('../middlewares/auth')
+const autho = require('../middlewares/autho')
 
 router.get('/', (req, res) => {
     res.status(200).json({ message: 'Welcome to the server' })
@@ -14,7 +15,8 @@ router.get('/', (req, res) => {
 
 router.use(userRoutes)
 
-router.use(auth)
+router.use(auth) // authentication
+// router.use(autho) // authorization
 
 router.use('/posts', postRoute)
 router.use('/categories', categoryRoute)

@@ -1,3 +1,5 @@
+'use strict'
+
 const errorHandler = (err, req, res, next) => {
     let statusCode = (status, message) => {
         return res.status(status).json(message)
@@ -23,6 +25,10 @@ const errorHandler = (err, req, res, next) => {
 
     if (err.name === 'AuthenticationError') {
         return statusCode(401, { message: err.message })
+    }
+
+    if (err.name === 'AuthorizationError') {
+        return statusCode(403, { message: err.message })
     }
 
     if (err.name === 'NotFound') {
