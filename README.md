@@ -29,7 +29,7 @@ _200 - Ok_
       "name": "string",
       "createdAt": "date",
       "updatedAt": "date"
-    }
+    },
     ...,
   ]
 }
@@ -95,7 +95,7 @@ or
 
 Description:
 
-- Get all post from database
+- Get all posts from database
 
 ### Response
 
@@ -114,7 +114,7 @@ _200 - OK_
       "AuthorId": "integer",
       "createdAt": "date",
       "updatedAt": "date"
-    }
+    },
     ...,
   ]
 }
@@ -142,7 +142,7 @@ _200 - OK_
 
 ```json
 {
-  "status": "ok",
+  "status": "string",
   "data": {
     "id": "integer",
     "title": "string",

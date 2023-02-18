@@ -17,6 +17,14 @@ const errorHandler = (err, req, res, next) => {
         return statusCode(401, { message: 'Invalid token' })
     }
 
+    if (err.name === 'TokenExpiredError') {
+        return statusCode(401, { message: 'Invalid token' })
+    }
+
+    if (err.name === 'AuthenticationError') {
+        return statusCode(401, { message: err.message })
+    }
+
     if (err.name === 'NotFound') {
         return statusCode(404, { message: err.message })
     }
