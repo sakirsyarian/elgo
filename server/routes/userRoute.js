@@ -7,4 +7,6 @@ router.post('/register', UserController.userCreate)
 
 router.post('/login', UserController.userfindOne)
 
+router.post('/google', UserController.googlefindOrCreate)
+
 module.exports = router
