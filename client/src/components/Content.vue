@@ -2,12 +2,18 @@
 import Login from './Login.vue'
 import Dashboard from './Dashboard.vue'
 import Posting from './Posting.vue'
+import PostingAdd from './PostingAdd.vue'
+import Category from './Category.vue'
+import CategoryAdd from './CategoryAdd.vue'
 
 export default {
     components: {
         Login,
         Dashboard,
         Posting,
+        PostingAdd,
+        Category,
+        CategoryAdd,
     },
 }
 </script>
@@ -18,6 +24,9 @@ export default {
             <Login />
             <Dashboard />
             <Posting />
+            <PostingAdd />
+            <Category />
+            <CategoryAdd />
         </div>
     </section>
 </template>

@@ -3,7 +3,7 @@
 <template>
     <section class="px-12 border-2">
         <div class="flex justify-between">
-            <h2 class="font-bold text-3xl">Postings</h2>
+            <h2 class="font-bold text-3xl">Categories</h2>
             <button type="button" class="px-3 py-2 flex items-center button-add">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-5 h-5">
@@ -20,13 +20,10 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" class="px-6 py-3">
+                            No
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Title
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Author
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Category
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Created
@@ -36,14 +33,11 @@
                 </thead>
                 <tbody>
                     <tr class="bg-white border-b">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                            Apple MacBook Pro 17"
-                        </th>
                         <td class="px-6 py-4">
-                            Laptop
+                            1
                         </td>
-                        <td class="px-6 py-4">
-                            Laptop
+                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            Apple MacBook Pro 17"
                         </td>
                         <td class="px-6 py-4">
                             Laptop
