@@ -1,7 +1,7 @@
 <script></script>
 
 <template>
-    <section class="padding-section bg-gray-50 rounded-lg">
+    <section class="padding-section bg-gray-50 rounded-b-lg">
         <ul class="grid gap-10">
             <div class="grid gap-2">
                 <p class="mb-2 font-medium text-lg">Panel</p>

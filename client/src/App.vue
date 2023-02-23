@@ -1,26 +1,26 @@
 <script>
-import Login from './components/Login.vue'
 import Navbar from './components/Navbar.vue'
 import Sidebar from './components/Sidebar.vue'
+import Content from './components/Content.vue'
 
 export default {
   components: {
-    Login,
     Navbar,
-    Sidebar
+    Sidebar,
+    Content,
   },
 }
 </script>
 
 <template>
-  <header>
+  <header class="container mx-auto">
     <Navbar />
   </header>
 
   <main class="container mx-auto">
-    <div class="grid grid-cols-5">
+    <section class="grid grid-cols-5">
       <Sidebar />
-      <Login />
-    </div>
+      <Content />
+    </section>
   </main>
 </template>
