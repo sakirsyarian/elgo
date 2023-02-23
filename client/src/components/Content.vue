@@ -1,11 +1,13 @@
 <script>
 import Login from './Login.vue'
 import Dashboard from './Dashboard.vue'
+import Posting from './Posting.vue'
 
 export default {
     components: {
         Login,
-        Dashboard
+        Dashboard,
+        Posting,
     },
 }
 </script>
@@ -15,6 +17,7 @@ export default {
         <div class="grid gap-12">
             <Login />
             <Dashboard />
+            <Posting />
         </div>
     </section>
 </template>
