@@ -1,7 +1,7 @@
 <script></script>
 
 <template>
-    <section class="px-12 border-2">
+    <section class="px-12">
         <h2 class="font-bold text-3xl">New Category</h2>
 
         <div class="mt-10">

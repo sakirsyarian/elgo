@@ -1,6 +1,6 @@
 'use strict'
 
-const { Post, Category } = require('../models')
+const { Post, Category, User } = require('../models')
 
 class PostController {
     static async postCreate(req, res, next) {
@@ -19,7 +19,7 @@ class PostController {
 
     static async postFindAll(req, res, next) {
         try {
-            const posts = await Post.findAll()
+            const posts = await Post.findAll({ include: [Category, User] })
 
             res.status(200).json({
                 status: 'ok',

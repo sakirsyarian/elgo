@@ -1,7 +1,7 @@
 <script></script>
 
 <template>
-    <section class="px-12 border-2">
+    <section class="px-12">
         <div class="flex justify-between">
             <h2 class="font-bold text-3xl">Categories</h2>
             <button type="button" class="px-3 py-2 flex items-center button-add">
