@@ -34,6 +34,14 @@ export default {
             this.categories = value;
         },
 
+        handlerLogout() {
+            localStorage.clear();
+            this.page = "login";
+
+            this.postings = [];
+            this.categories = [];
+        },
+
         postAjax(url, data, headers) {
             return axios({
                 method: "POST",
@@ -96,12 +104,16 @@ export default {
 
 <template>
     <header class="mx-auto top-0 z-10 container sticky bg-white">
-        <Navbar v-if="page !== 'login'" />
+        <Navbar v-if="page !== 'login'" @change-page="handlerChangePage" />
     </header>
 
     <main class="mx-auto container">
         <section class="grid grid-cols-5 relative h-screen">
-            <Sidebar v-if="page !== 'login'" @change-page="handlerChangePage" />
+            <Sidebar
+                v-if="page !== 'login'"
+                :handlerLogout="handlerLogout"
+                @change-page="handlerChangePage"
+            />
             <Content
                 :page="page"
                 :postings="postings"

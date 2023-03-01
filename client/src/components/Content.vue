@@ -62,9 +62,17 @@ export default {
                 :postings="postings"
                 :categories="categories"
             />
-            <Posting v-if="page === 'post'" />
+            <Posting
+                v-if="page === 'post'"
+                :postings="postings"
+                @change-page="handlerChangePage"
+            />
             <PostingAdd v-if="page === 'post add'" />
-            <Category v-if="page === 'category'" />
+            <Category
+                v-if="page === 'category'"
+                :categories="categories"
+                @change-page="handlerChangePage"
+            />
             <CategoryAdd v-if="page === 'category add'" />
         </div>
     </section>

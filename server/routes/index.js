@@ -19,6 +19,6 @@ router.use(auth) // authentication
 // router.use(autho) // authorization
 
 router.use('/posts', postRoute)
-router.use('/categories', categoryRoute)
+router.use('/', categoryRoute)
 
 module.exports = router

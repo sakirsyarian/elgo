@@ -1,12 +1,20 @@
 'use strict'
 
-const { Post, Category, User } = require('../models')
+const { Post, Category, User, History } = require('../models')
 
 class PostController {
     static async postCreate(req, res, next) {
         try {
+            const { id } = req.user
             const { title, content, imgUrl, CategoryId, AuthorId } = req.body
+
+            const user = await User.findByPk(id)
             const post = await Post.create({ title, content, imgUrl, CategoryId, AuthorId })
+            await History.create({
+                name: post.title,
+                description: `New entity with id: ${post.id} created`,
+                updatedBy: user.username
+            })
 
             res.status(201).json({
                 status: 'created',
@@ -41,6 +49,54 @@ class PostController {
                     message: 'Post not found'
                 }
             }
+
+            res.status(200).json({
+                status: 'ok',
+                data: post
+            })
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    static async postUpdate(req, res, next) {
+        try {
+            const { id } = req.params
+            const { title, content, imgUrl, CategoryId, AuthorId } = req.body
+
+            const user = await User.findByPk(req.user.id)
+            const post = await Post.update({ title, content, imgUrl, CategoryId, AuthorId }, { where: { id }, returning: true, plain: true })
+
+            const dataPost = post[1].dataValues
+            await History.create({
+                name: dataPost.title,
+                description: `Entity with id: ${dataPost.id} updated`,
+                updatedBy: user.username
+            })
+
+            res.status(200).json({
+                status: 'ok',
+                data: post
+            })
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    static async postUpdatePatch(req, res, next) {
+        try {
+            const { id } = req.params
+            const { status } = req.body
+
+            const user = await User.findByPk(req.user.id)
+            const post = await Post.update({ status }, { where: { id }, returning: true, plain: true })
+
+            const dataPost = post[1].dataValues
+            await History.create({
+                name: dataPost.title,
+                description: `Entity status with id: ${dataPost.id} has been updated from Active into Inactive`,
+                updatedBy: user.username
+            })
 
             res.status(200).json({
                 status: 'ok',

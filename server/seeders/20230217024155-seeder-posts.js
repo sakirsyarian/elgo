@@ -13,8 +13,8 @@ module.exports = {
      * }], {});
     */
     await queryInterface.bulkInsert('Posts', [{
-      title: 'Belajar Membuat API dengan Express.js',
-      content: 'Ini adalah contoh content dari post pertama yang dibuat dengan seeder',
+      title: 'Belajar Express.js',
+      content: 'Ini adalah contoh content dari post pertama',
       imgUrl: 'express.png',
       CategoryId: 1,
       AuthorId: 1,

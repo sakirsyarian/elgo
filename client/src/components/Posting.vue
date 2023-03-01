@@ -2,25 +2,11 @@
 import axios from "axios";
 
 export default {
+    emits: ["change-page"],
+    props: ["postings"],
     methods: {
-        async getPosts() {
-            try {
-                const { data } = await axios({
-                    method: "GET",
-                    url: `http://localhost:3000/posts`,
-                    headers: {
-                        access_token: localStorage.getItem("access_token"),
-                    },
-                });
-
-                this.posts = data.data;
-            } catch (error) {
-                console.log(error);
-            }
-        },
-
         localDate(index) {
-            const dateFormat = this.posts.map((post) => {
+            const dateFormat = this.postings.map((post) => {
                 const date = new Date(post.createdAt);
 
                 return date.toLocaleDateString("id-ID", {
@@ -34,10 +20,6 @@ export default {
             return dateFormat[index];
         },
     },
-
-    mounted() {
-        this.getPosts();
-    },
 };
 </script>
 
@@ -48,6 +30,7 @@ export default {
             <button
                 type="button"
                 class="px-3 py-2 flex items-center button-add"
+                @click="this.$emit('change-page', 'post add')"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -71,6 +54,7 @@ export default {
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
+                        <th scope="col" class="px-6 py-3">No</th>
                         <th scope="col" class="px-6 py-3">Title</th>
                         <th scope="col" class="px-6 py-3">Author</th>
                         <th scope="col" class="px-6 py-3">Category</th>
@@ -81,9 +65,10 @@ export default {
                 <tbody>
                     <tr
                         class="bg-white border-b"
-                        v-for="(post, index) in posts"
+                        v-for="(post, index) in postings"
                         :key="post.id"
                     >
+                        <td class="px-6 py-4">{{ index + 1 }}</td>
                         <th
                             scope="row"
                             class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"

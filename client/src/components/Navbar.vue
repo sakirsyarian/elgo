@@ -1,4 +1,8 @@
-<script></script>
+<script>
+export default {
+    emits: ["change-page"],
+};
+</script>
 
 <template>
     <nav class="padding-base flex justify-between">
@@ -8,7 +12,10 @@
 
         <ul class="flex gap-10 font-medium">
             <li>
-                <a href="#">
+                <a
+                    href=""
+                    @click.prevent="this.$emit('change-page', 'dashboard')"
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -26,7 +33,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="" @click.prevent="this.$emit('change-page', 'post')">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -44,7 +51,10 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a
+                    href=""
+                    @click.prevent="this.$emit('change-page', 'category')"
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"

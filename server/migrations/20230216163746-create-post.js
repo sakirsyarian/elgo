@@ -20,6 +20,10 @@ module.exports = {
       imgUrl: {
         type: Sequelize.STRING
       },
+      status: {
+        type: Sequelize.STRING,
+        defaultValue: 'Active'
+      },
       CategoryId: {
         type: Sequelize.INTEGER,
         references: {
