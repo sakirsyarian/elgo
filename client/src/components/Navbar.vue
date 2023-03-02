@@ -7,7 +7,13 @@ export default {
 <template>
     <nav class="padding-base flex justify-between">
         <div class="font-bold text-lg">
-            <a class="text-2xl" href="#">ELGO</a>
+            <a
+                class="text-2xl"
+                href=""
+                @click.prevent="this.$emit('change-page', 'dashboard')"
+            >
+                ELGO
+            </a>
         </div>
 
         <ul class="flex gap-10 font-medium">

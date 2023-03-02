@@ -43,6 +43,7 @@ class UserController {
                 access_token,
                 data: {
                     id: user.id,
+                    name: user.username,
                     email: user.email,
                 }
             })

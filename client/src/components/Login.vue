@@ -34,6 +34,20 @@ export default {
             }
         },
 
+        async handlerRegister() {
+            try {
+                const { data } = await this.postAjax("register", {
+                    email: this.register.email,
+                    password: this.register.password,
+                });
+
+                localStorage.setItem("access_token", data.access_token);
+                this.handlerPush();
+            } catch (error) {
+                console.log(error);
+            }
+        },
+
         async hadlerPostLogin() {
             try {
                 const { data } = await this.postAjax("login", {
@@ -42,9 +56,24 @@ export default {
                 });
 
                 localStorage.setItem("access_token", data.access_token);
+                localStorage.setItem("name", data.data.name);
                 this.handlerPush();
+
+                // success toast
+                this.$toast.open({
+                    message: "Successfully logged in",
+                    type: "success",
+                    position: "top-right",
+                });
             } catch (error) {
                 console.log(error);
+
+                // error toast
+                this.$toast.open({
+                    message: "Invalid email or password",
+                    type: "error",
+                    position: "top-right",
+                });
             }
         },
 
@@ -98,7 +127,7 @@ export default {
                     apllication
                 </p>
 
-                <form class="mt-6">
+                <form class="mt-6" @submit.prevent="handlerRegister()">
                     <div class="mb-6">
                         <label for="email" class="label-form">Your email</label>
                         <input

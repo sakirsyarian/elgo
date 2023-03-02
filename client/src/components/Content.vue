@@ -67,13 +67,21 @@ export default {
                 :postings="postings"
                 @change-page="handlerChangePage"
             />
-            <PostingAdd v-if="page === 'post add'" />
+            <PostingAdd
+                v-if="page === 'post add'"
+                :postAjax="postAjax"
+                @change-page="handlerChangePage"
+            />
             <Category
                 v-if="page === 'category'"
                 :categories="categories"
                 @change-page="handlerChangePage"
             />
-            <CategoryAdd v-if="page === 'category add'" />
+            <CategoryAdd
+                v-if="page === 'category add'"
+                :postAjax="postAjax"
+                @change-page="handlerChangePage"
+            />
         </div>
     </section>
 </template>
